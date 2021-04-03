@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 const Home = ({data, loading}) => {
   const [filteredData, setFilteredData] =  useState(data);
+  // update filtered data if data were updated
   useEffect(()=>{setFilteredData(data)}, [data]);
   return (
     <div>

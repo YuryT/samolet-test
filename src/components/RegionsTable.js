@@ -32,6 +32,8 @@ const columns = [
 
 
 const RegionsTable = ({data, loading}) => {
+  // for mobile version last to columns is hidden and
+  // content padding removed(see App.css)
   return (<Table
     columns={columns}
     dataSource={data}

@@ -2,7 +2,7 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 import LoadingPlaceHolder from '../components/LoadingPlaceHolder'
 import Navigation from '../components/Navigation'
-import {Empty} from 'antd';
+import {Alert} from 'antd';
 import PropTypes from "prop-types";
 
 const Details = ({data, loading}) => {
@@ -10,11 +10,17 @@ const Details = ({data, loading}) => {
   let details;
   const {id} = useParams();
   if (loading) {
+    // handle the case if details page was opened directly
     content = (<LoadingPlaceHolder/>);
   } else {
     details = data.find(e => e.kopuk === id);
     if (!details) {
-      content = (<Empty/>)
+      content = (<Alert
+        message="Page not found"
+        description="Нет данных об этом регионе"
+        type="warning"
+        showIcon
+      />);
     } else {
       content = (<pre>{JSON.stringify(details, null, 2)}</pre>);
     }
